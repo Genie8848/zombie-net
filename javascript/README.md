@@ -227,7 +227,6 @@ message with the `node`s information like this one is shown
 └─────────────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────┘
 │ ChainSpec Path          │ /tmp/zombie-85391d4649f2829bb26b30d6c0328bcb_-15819-BNFoSs5qusWH/rococo-local-100.json             │
 └─────────────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────┘
-
 ```
 
 Both the `prometheus` and the `node` links are accessible in your local machine to get the `metrics`
@@ -300,8 +299,6 @@ bob: is up
 alice: parachain 100 is registered within 225 seconds
 alice: parachain 100 block height is at least 10 within 200 seconds
 ```
-
-Other examples are provided in the [examples](examples) directory.
 
 ---
 

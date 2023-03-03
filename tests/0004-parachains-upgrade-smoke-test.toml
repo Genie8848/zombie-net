@@ -1,0 +1,36 @@
+[settings]
+timeout = 1000
+bootnode = true
+
+[relaychain]
+default_image = "docker.io/parity/polkadot:latest"
+chain = "rococo-local"
+command = "polkadot"
+
+  [[relaychain.nodes]]
+  name = "alice"
+
+  [[relaychain.nodes.env]]
+  name = "RUST_LOG"
+  value = "runtime=debug,parachain=trace,cumulus-collator=trace,aura=trace"
+
+  [[relaychain.nodes]]
+  name = "bob"
+  extra_args = [ "--bob" ]
+
+  [[relaychain.nodes.env]]
+  name = "RUST_LOG"
+  value = "runtime=debug,parachain=trace,cumulus-collator=trace,aura=trace"
+
+[[parachains]]
+id = 100
+add_to_genesis = true
+
+  [parachains.collator]
+  name = "collator01"
+  image = "docker.io/parity/polkadot-parachain:latest"
+  command_with_args = "polkadot-parachain --collator --alice --force-authoring --tmp --parachain-id 100 --rpc-cors all --unsafe-rpc-external --rpc-methods unsafe --unsafe-ws-external -- --execution wasm --chain /cfg/rococo-local.json --bootnodes /dns/bootnode/tcp/30333/ws/p2p/12D3KooWEyoppNCUx8Yx66oV9fJnriXwCcXwDDUA2kj6vnc6iDEp"
+
+  [[parachains.collator.env]]
+  name = "RUST_LOG"
+  value = "runtime=debug,parachain=trace,cumulus-collator=trace,aura=trace"
